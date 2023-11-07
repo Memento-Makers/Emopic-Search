@@ -15,11 +15,11 @@ Emopic-Search 저장소에는 Emopic 프로젝트에 사용되는 검색서버�
 
 - 서버를 시작하기전에 서비스 DB의 데이터를 동기화 하기 위해 사용하고 있는 서비스의 DB Connector가 필요합니다. 
 
-### Compose docker 
+### Docker Compose  
 
 - 필요한 설정 파일는 docker-compose의 volume을 이용해 컨테이너 안으로 넣습니다. 
 
-### 로컬에서 실행하기
+### 실행하기
 
 #### 1. 레포지토리 클론 
 ```shell 
