@@ -1,0 +1,47 @@
+자연=>강
+자연=>해변
+자연=>산
+자연=>하늘
+자연=>바다
+자연=>들판
+자연=>나무
+자연=>구름
+자연=>숲
+강,river
+해변,beach
+산,mountain
+하늘,sky
+바다,ocean
+들판,field
+나무,tree
+구름,cloud
+숲,forest
+
+동물=> 강아지
+동물=> 고양이
+동물=> 새
+동물=> 기린
+동물=> 닭
+동물,animal
+새,bird
+닭,chicken
+기린,giraffe
+dog,강아지
+고양이,cat
+
+음식=> 국수
+음식=> 치즈
+음식=> 야채
+음식=> 피자
+음식=> 감자
+음식=> 생선
+음식=> 디저트
+음식=> 고기
+음식,food
+고기,meat
+국수,noodle
+치즈,cheese
+야채,vegetable
+피자,pizza
+감자,potato
+생선,fish
