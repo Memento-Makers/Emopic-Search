@@ -1,25 +1,32 @@
 # Emopic-Search
 Emopic-Search 저장소에는 Emopic 프로젝트에 사용되는 검색서버를 구축하기 위한 파일들이 있습니다. 
 
+
+## Table Of content
+
+- [기술 스택](#기술-스택)
+- [실행 하기](#실행하기)
+- [참고사이트](#참고-사이트)
+- [기여 하기](#기여하기)
+
 ## 기술 스택
 ![elasticsearch](https://img.shields.io/badge/elasticsearch-8.9.0-005571)
 ![kibana](https://img.shields.io/badge/kibana-8.9.0-005571)
 ![logstash](https://img.shields.io/badge/logstash-8.9.0-005571)
 
 
-## 배포
+### 배포
 ![docker](https://img.shields.io/badge/docker-blue)
 ![docker-compose](https://img.shields.io/badge/docker_compose-3.8-blue)
 
-## 시작하기
+## 실행하기
 
 - 서버를 시작하기전에 서비스 DB의 데이터를 동기화 하기 위해 사용하고 있는 서비스의 DB Connector가 필요합니다. 
+- Emopic 프로젝트는 서비스 DB가 Mysql이라 Mysql Connector를 사용해 데이터를 동기화 시켰습니다.
 
-### Docker Compose  
+### Compose docker 
 
 - 필요한 설정 파일는 docker-compose의 volume을 이용해 컨테이너 안으로 넣습니다. 
-
-### 실행하기
 
 #### 1. 레포지토리 클론 
 ```shell 
@@ -46,7 +53,7 @@ bin/elasticsearch-plugin install analysis-nori
 #설치 완료 후 container 터미널에서 빠져나와 재부팅 명령어를 실행합니다. 
 docker restart <elasticsearch_conainer_id>
 ```
-- [nori 사용자 정의 사전](elasticsearch/config/user_dictionary.txt)이나 [동의어 사전](elasticsearch/config/synonyms.txt)을 만드신다면 elasticsearch/config 안에 만들고 사용하는 것을 추천합니다. (파일 이름이나 사전의 경로가 달라질 경우 docker-compose.yml 에서 elasticsearch의 volume 설정 부분을 수정해주세요.) 
+- nori 사용자 정의 사전이나 동의어 사전을 만드신다면 elasticsearch/config 안에 만들고 사용하는 것을 추천합니다. (파일 이름이나 사전의 경로가 달라질 경우 docker-compose.yml 에서 elasticsearch의 volume 설정 부분을 수정해주세요.)
 
 
 ## 참고 사이트
@@ -55,3 +62,5 @@ docker restart <elasticsearch_conainer_id>
 - nori
     - https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-nori-tokenizer.html
     - https://esbook.kimjmin.net/06-text-analysis/6.7-stemming/6.7.2-nori
+
+## [기여하기](docs/contribute.md)
