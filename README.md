@@ -55,6 +55,74 @@ docker restart <elasticsearch_conainer_id>
 ```
 - nori 사용자 정의 사전이나 동의어 사전을 만드신다면 elasticsearch/config 안에 만들고 사용하는 것을 추천합니다. (파일 이름이나 사전의 경로가 달라질 경우 docker-compose.yml 에서 elasticsearch의 volume 설정 부분을 수정해주세요.)
 
+### 5. kibana 화면에서 index 생성
+- kibana 주소 : <yourdomain or localhost>:5601
+- [명령어 입력하는 콘솔](https://www.elastic.co/guide/en/kibana/current/console-kibana.html)
+- 생성 명령어<details>
+    ```
+    PUT nori_photo
+    {
+      "settings": {
+        "index": {
+          "analysis": {
+            "tokenizer": {
+              "my_nori_tokenizer": {
+                "type": "nori_tokenizer",
+                "user_dictionary":"user_dictionary.txt"
+                "decompound_mode": "mixed",
+                "discard_punctuation": "false",
+              }
+            },
+            "filter": { // 띄어쓰기 filter
+              "stopwords": {
+                "type": "stop",
+                "stopwords": [" "]
+              },
+              "synonym": {// 동의어 filter 
+                "type": "synonym",
+                "synonyms_path": "synonyms.txt"
+              }
+            },
+            "analyzer": {
+              "my_nori_analyzer": {
+                "type": "custom",
+                "tokenizer": "my_nori_tokenizer",
+                "filter": ["lowercase", "stop", "trim", "stopwords", "nori_part_of_speech"]
+              },
+              "my_nori_synonym_analyzer":{
+                "type": "custom",
+                "tokenizer": "my_nori_tokenizer",
+                "filter": ["lowercase", "stop", "trim", "stopwords", "nori_part_of_speech","synonym"]
+              }
+            }
+          }
+        }
+      },
+      "mappings" : {
+        "properties" : {
+          "caption": {
+            "type" : "text",
+            //데이터 입력시 사용
+            "analyzer": "my_nori_analyzer",
+            //검색시 사용
+            "search_analyzer": "my_nori_synonym_analyzer"
+          },
+          "class_list":{
+            "type" : "text",
+            "analyzer": "my_nori_analyzer",
+            "search_analyzer": "my_nori_synonym_analyzer"
+          },
+          "snapped_at":{
+            "type": "date",
+            "format": "strict_date_optional_time||yyyyMMdd||yyyyMM||year||strict_year_month"
+          }
+        }
+      }
+    }
+
+```
+</details>
+<div markdown="1">
 
 ## 참고 사이트
 - docker-elk stack
