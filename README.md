@@ -55,7 +55,7 @@ docker restart <elasticsearch_conainer_id>
 ```
 - nori 사용자 정의 사전이나 동의어 사전을 만드신다면 elasticsearch/config 안에 만들고 사용하는 것을 추천합니다. (파일 이름이나 사전의 경로가 달라질 경우 docker-compose.yml 에서 elasticsearch의 volume 설정 부분을 수정해주세요.)
 
-### 5. index 생성
+#### 5. index 생성
 - kibana 주소 : <yourdomain or localhost>:5601
 - [명령어 입력하는 콘솔](https://www.elastic.co/guide/en/kibana/current/console-kibana.html)
 - 생성 명령어<details>
@@ -120,7 +120,7 @@ docker restart <elasticsearch_conainer_id>
       }
     }
 
-```
+    ```
 </details>
 <div markdown="1">
 
